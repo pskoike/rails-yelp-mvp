@@ -1,6 +1,33 @@
-<% @restaurants.each do |r| %>
-  <p><%= r.name %></p>
-  <p><%= r.address %></p>
-  <p><%= r.category %></p>
-  <hr>
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 padded">
+            <% @restaurants.each do |r| %>
+            <div class="media" data-category="<%= r.category %>">
+                <div class="media-left">
+                    <img class="media-object" src="http://lorempixel.com/100/100/food?random" alt="...">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading"><%= link_to r.name, restaurant_path(r.id) %></h4>
+                    <h6><%= r.category %></h6>
+                    <p><%= r.address %></p>
+                </div>
+                <hr>
+            </div>
+
+            <% end %>
+        </div>
+                <a href="" id="italian">Italian</a>
+                <a href="" id="chinese">Chinese</a>
+    </div>
+</div>
+
+<script>
+$('#italian').on('click', function(event){
+  event.preventDefault()
+  $('.media').filter('[data-category="italian"]').toggleClass('hide');
+});
+$('#chinese').on('click', function(event){
+  event.preventDefault()
+  $('.media').filter('[data-category="chinese"]').toggleClass('hide');
+});
+</script>

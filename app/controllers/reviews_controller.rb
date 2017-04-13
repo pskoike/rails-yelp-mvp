@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   def index
     @reviews = Review.all
   end
@@ -13,10 +12,10 @@ class ReviewsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = @restaurant.reviews.new(reviews_params)
     if @review.save
-    redirect_to  restaurant_review_path(@restaurant, @review)
-  else
-    render :new
-  end
+      redirect_to restaurant_review_path(@restaurant, @review)
+    else
+      render :new
+    end
   end
 
   def show
@@ -28,5 +27,4 @@ class ReviewsController < ApplicationController
   def reviews_params
     params.require(:review).permit(:content, :rating)
   end
-
 end
